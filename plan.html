@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="./multistepform.css">
+    <script src="./multistepform.js"></script>
+</head>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url(./assets/fonts/Ubuntu-Bold.ttf);
+}
+@font-face {
+    font-family: Ubuntu-Medium;
+    src: url(./assets/fonts/Ubuntu-Medium.ttf);
+}
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url(./assets/fonts/Ubuntu-Regular.ttf);
+}
+
+body {
+    font-family:Ubuntu-Regular;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+body.fade-out {
+    opacity: 0;
+}
+
+
+.right-side {
+    padding: 20px;
+    margin-top: 25px;
+}
+.plan-header {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.plan-header h1 {
+    font-size: 24px;
+    color: #02295a;
+    
+}
+
+.plan-header p {
+    font-size: 14px;
+    color: #9699aa;
+    margin-top: 10px;
+}
+
+.plan-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap:15px
+}
+
+.plan {
+    border: 2px solid rgb(231, 215, 231);
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    width:30%;
+    height:98%;
+}
+
+.plan:hover {
+    border-color: #483EFF;
+}
+
+.plan h3 {
+    font-size: 16px;
+    color: #02295a;
+    flex:1
+}
+.plan img{
+   margin-bottom: 50px;
+}
+
+.plan p {
+    font-size: 14px;
+    color: #9699aa;
+}
+
+.plan-icon {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.billing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+#toggle-icon {
+    font-size: 32px; /* Adjust this value for medium size */
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.billing-toggle label {
+    font-weight: 600;
+    color: #02274d;
+    margin:20px;
+}
+
+#billing-atoggle {
+    display: none;
+}
+
+#billing-atoggle + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+#billing-atoggle + label:before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: #ddd;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+}
+
+#billing-atoggle + label:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 50%;
+    left: -48px;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+#billing-atoggle:checked + label:before {
+    background-color: #02274d;
+}
+
+#billing-atoggle:checked + label:after {
+    transform: translate(22px, -50%);
+}
+
+/* Styles for active/inactive states of labels */
+#monthly-label {
+    color: #02274d;
+}
+
+#billing-atoggle:checked ~ #monthly-label {
+    color: #6b7280;
+}
+
+#yearly-label {
+    color: #6b7280;
+   
+}
+
+#billing-atoggle:checked ~ #yearly-label {
+    color: #02274d;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24%;
+    
+}
+
+.back-btn{
+    border: none;
+    background-color: transparent;
+    color: #6b7280; 
+    font-size: 15px;
+    font-weight: bold;
+} 
+.next-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #02295a;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn:hover{
+    color: #483EFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+ .next-btn:hover {
+    background-color: #1e3a8a;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin: 0; 
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px; 
+    }
+
+    .left-side {
+        width: 100%;
+        height: 100px;
+        border-radius: 10px 10px 0 0;
+        border-radius: 10px;
+         margin: 10px;
+    }
+
+    .steps {
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+        justify-content: center;
+        margin-top: 5%;
+        margin-left: 0;
+    }
+
+    .step-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .step-text {
+        display: none;
+    }
+
+    .right-side {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .plan-options {
+        display: flex;
+        flex-direction: column; 
+        margin: 0; 
+        padding: 0; 
+    }
+
+    .plan {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 15px; 
+        width: 100%;
+        height: 80px; 
+        padding: 10px;
+        box-sizing: border-box; 
+        border: 1px solid #ddd; 
+        border-radius: 5px;
+    }
+
+    .plan-icon-container {
+        margin-right: 10px; 
+    }
+
+    .plan-icon-container img {
+        width: 40px; 
+        height: 40px;
+        margin-top: 140%;
+    }
+
+    .plan-text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        flex: 1;
+    }
+
+    h3, p {
+        margin: 0; 
+        padding: 0;
+    }
+
+    .billing-toggle {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px; 
+    }
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .back-btn, .next-btn {
+        width: 48%;
+        padding: 10px;
+    }
+
+}
+    
+
+</style>
+<script src="./multistepform.js"></script>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToInfo()">1</div>
+                    <div class="step-text">
+                        <p>STEP 1</p>
+                        <h3>YOUR INFO</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToPlan()">2</div>
+                    <div class="step-text">
+                        <p>STEP 2</p>
+                        <h3>SELECT PLAN</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToAddons()">3</div>
+                    <div class="step-text">
+                        <p>STEP 3</p>
+                        <h3>ADD-ONS</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToSummary()">4</div>
+                    <div class="step-text">
+                        <p>STEP 4</p>
+                        <h3>SUMMARY</h3>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        
+        <div class="right-side">
+            <div class="plan-header">
+                <h1>Select your plan</h1>
+                <p>You have the option of monthly or yearly billing.</p>
+            </div>
+            <div class="plan-options">
+                <div class="plan">
+                    <div class="plan-icon-container">
+                        <img src="./assets/images/icon-arcade.svg" class="plan-icon" alt="Arcade Icon">
+                    </div>
+                    <div class="plan-text-container">
+                        <h3>Arcade</h3>
+                        <p>$9/mo</p>
+                        
+                    </div>
+                </div>
+                <div class="plan">
+                    <div class="plan-icon-container">
+                        <img src="./assets/images/icon-advanced.svg" class="plan-icon" alt="Advanced Icon">
+                    </div>
+                    <div class="plan-text-container">
+                        <h3>Advanced</h3>
+                        <p>$12/mo</p>
+                    </div>
+                </div>
+                <div class="plan">
+                    <div class="plan-icon-container">
+                        <img src="./assets/images/icon-pro.svg" class="plan-icon" alt="Pro Icon">
+                    </div>
+                    <div class="plan-text-container">
+                        <h3>Pro</h3>
+                        <p>$15/mo</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="billing-toggle">
+                <label for="billing-atoggle" id="monthly-label">Monthly</label>
+                <input type="checkbox" id="billing-atoggle" onchange="toggleBilling()">
+                <label for="billing-atoggle" id="yearly-label">Yearly</label>
+            </div>
+            
+            
+            <div class="actions">
+                <button class="back-btn" onclick="navigateToInfo()">Go Back</button>
+                <button class="next-btn" onclick="navigateToAddons()">Next Step</button>
+            </div>
+        </div>
+        
+        
+    </div>
+</body>
+</html>

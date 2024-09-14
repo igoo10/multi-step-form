@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="./multistepform.css">
+    <script src="./multistepform.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    @font-face {
+        font-family: Ubuntu-Bold;
+        src: url(./assets/fonts/Ubuntu-Bold.ttf);
+    }
+
+    @font-face {
+        font-family: Ubuntu-Medium;
+        src: url(./assets/fonts/Ubuntu-Medium.ttf);
+    }
+
+    @font-face {
+        font-family: Ubuntu-Regular;
+        src: url(./assets/fonts/Ubuntu-Regular.ttf);
+    }
+
+    body {
+        font-family: Ubuntu-Regular;
+        background-color: #f0f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    body.fade-out {
+        opacity: 0;
+    }
+
+    .container {
+        display: flex;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 80%;
+        max-width: 1000px;
+        height: 500px;
+    }
+
+    .left-side {
+        background-color: #4832e0;
+        width: 30%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: auto;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+}
+
+.step-btn:hover {
+    cursor: pointer;
+    border: solid 1px white;
+    background-color: aquamarine;
+    color: black;
+}
+
+.step-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    border: solid white;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.step-text {
+    color: white;
+}
+
+.step-text p {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.step-text h3 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+    .right-side {
+        background-color: white;
+        width: 70%;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .thank-you-img {
+        width: 70px;
+        margin-bottom: 20px;
+    }
+
+    .thank-you-header {
+        font-family: Ubuntu-Bold;
+        font-size: 28px;
+        color: #1e2a33;
+        margin-bottom: 10px;
+    }
+
+    .thank-you-text {
+        font-family: Ubuntu-Regular;
+        font-size: 16px;
+        color: #7d828b;
+        text-align: center;
+        max-width: 400px;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+        body {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin: 0; 
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-bottom: 50% 
+    }
+
+    .left-side {
+        width: 100%;
+        height: 100px;
+        border-radius: 10px 10px 0 0;
+        border-radius: 10px;
+         margin: 10px;
+    }
+
+    .steps {
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+        justify-content: center;
+        margin-top: 5%;
+        margin-left: 0;
+    }
+
+    .step-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .step-text {
+        display: none;
+    }
+    .right-side{
+        margin-bottom: 20%;
+        margin-left: 14%;
+        padding: 20px;
+        text-align: center;
+    }
+    .thank-you-text{
+        text-align: center;
+    }
+
+    }
+</style>
+<body>
+    <div class="container">
+      
+        <div class="left-side">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-btn">1</div>
+                    <div class="step-text">
+                        <p>STEP 1</p>
+                        <h3>YOUR INFO</h3>
+                    </div>
+                </div>
+        
+                <div class="step">
+                    <div class="step-btn" >2</div>
+                    <div class="step-text">
+                        <p>STEP 2</p>
+                        <h3>SELECT PLAN</h3>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-btn" >3</div>
+                    <div class="step-text">
+                        <p>STEP 3</p>
+                        <h3>ADD-ONS</h3>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-btn" >4</div>
+                    <div class="step-text">
+                        <p>STEP 4</p>
+                        <h3>SUMMARY</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="right-side">
+            <img src="./assets/images/icon-thank-you.svg" alt="Thank You" class="thank-you-img">
+            <h1 class="thank-you-header">Thank you!</h1>
+            <p class="thank-you-text">
+                Thanks for confirming your subscription! We hope you have fun using our platform. 
+                If you ever need support, please feel free to email us at support@loremgaming.com.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

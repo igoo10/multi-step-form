@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="./multistepform.css">
+</head>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url(./assets/fonts/Ubuntu-Bold.ttf);
+}
+@font-face {
+    font-family: Ubuntu-Medium;
+    src: url(./assets/fonts/Ubuntu-Medium.ttf);
+}
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url(./assets/fonts/Ubuntu-Regular.ttf);
+}
+
+body {
+    font-family:Ubuntu-Regular;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.right-side {
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.plan-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.plan-header p {
+    color: #7d889e;
+    margin-bottom: 2rem;
+}
+
+.summary {
+    background-color:#e1eeee;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.summary-item h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.summary-item .label {
+    color: grey;
+    font-weight: 300;
+}
+.label h3:nth-child(1){
+    color: #1d1e32;
+}
+
+.summary-item .amount {
+    color: #1d1e32;
+    font-weight: bold;
+}
+
+.summary-item a {
+    font-size: 14px;
+    color: #4846f5;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #1d1e32;
+    /* margin-bottom: 2rem; */
+}
+
+.total-amount {
+    font-size: 18px;
+    color: #4846f5;
+}
+
+.next-btn:hover {
+    background-color: #3b3acc;
+}
+
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20%;
+    
+}
+
+.back-btn{
+    border: none;
+    background-color: transparent;
+    color: #6b7280; 
+    font-size: 15px;
+    font-weight: bold;
+} 
+.next-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #02295a;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.back-btn:hover{
+    color: #483EFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+ .next-btn:hover {
+    background-color: #1e3a8a;
+}
+
+@media (max-width: 768px) {
+    .steps{
+        margin-right: 20px;
+    }
+  .plan-header {
+    margin-bottom: -40px; /* Adjust the margin to move the header up */
+    text-align: left; /* Center the text */
+  }
+
+  .summary {
+    padding: 20px;
+    margin-top: 20px; /* Space between header and summary */
+    background-color:rgb(232, 246, 247);
+    border-radius: 10px;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .total {
+    margin-top: -15px;
+    border-left: 10px;
+    font-weight: bold;
+    color: #4a90e2;
+  }
+  .total .total-amount{
+    padding-right: 20px;
+  }
+
+  .actions {
+    display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  padding: 10px; 
+  
+  width: 356px; 
+  margin-left: -10%;
+  }
+
+
+  .back-btn {
+    margin-left: 10%;
+    color: grey;
+  }
+
+  .next-btn {
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 5px;
+    margin-right: 10%;
+  }
+}
+
+
+
+
+
+</style>
+<script src="./multistepform.js"></script>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToInfo()">1</div>
+                    <div class="step-text">
+                        <p>STEP 1</p>
+                        <h3>YOUR INFO</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToPlan()">2</div>
+                    <div class="step-text">
+                        <p>STEP 2</p>
+                        <h3>SELECT PLAN</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToAddons()">3</div>
+                    <div class="step-text">
+                        <p>STEP 3</p>
+                        <h3>ADD-ONS</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToSummary()">4</div>
+                    <div class="step-text">
+                        <p>STEP 4</p>
+                        <h3>SUMMARY</h3>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        
+        <div class="right-side">
+            <div class="plan-header">
+                <h1>Finishing up</h1>
+                <p>Double-check everything looks OK before confirming.</p>
+            </div>
+            
+            
+            <div class="summary">
+                <div class="summary-item" style="border-bottom: 1px solid grey; padding-bottom: 20px; margin-bottom: 40px;">
+                    <div class="label">
+                        <h3 style="margin-bottom: 2px;">Arcade (Monthly)</h3>
+                        <a href="./plan.html">Change</a>
+                    </div>
+                    <div class="amount">+$9/mo</div>
+                </div>
+                
+        
+                <div class="summary-item" style="font-size: 15px;">
+                    <div class="label">Online service</div>
+                    <div class="amount">+$1/mo</div>
+                </div>
+        
+                <div class="summary-item" style="font-size: 15px;">
+                    <div class="label">Larger storage</div>
+                    <div class="amount">+$2/mo</div>
+                </div>
+            </div>
+        
+            <div class="total">
+                <div class="label">Total (Per Month)</div>
+                <div class="total-amount">+$12/mo</div>
+            </div>
+    
+            <div class="actions">
+                <button class="back-btn" onclick="navigateToAddons()">Go Back</button>
+                <button class="next-btn" onclick="navigateToThankyou()">Confirm</button>
+            </div> 
+        </div>
+        
+         </div>
+                
+
+</body>
+</html>

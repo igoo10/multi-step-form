@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="./multistepform.css">
+    <script src="./multistepform.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-btn">1</div>
+                    <div class="step-text">
+                        <p>STEP 1</p>
+                        <h3>YOUR INFO</h3>
+                    </div>
+                </div>
+        
+                
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToPlan()">2</div>
+                    <div class="step-text">
+                        <p>STEP 2</p>
+                        <h3>SELECT PLAN</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToAddons()">3</div>
+                    <div class="step-text">
+                        <p>STEP 3</p>
+                        <h3>ADD-ONS</h3>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-btn" onclick="navigateToSummary()">4</div>
+                    <div class="step-text">
+                        <p>STEP 4</p>
+                        <h3>SUMMARY</h3>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        
+        <div class="right-side">
+            <form>
+                <div class="form-header">
+                    <h1>Personal info</h1>
+                    <p>Please provide your name, email address, and phone number.</p>
+                </div><br>
+                <div class="form-input">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="e.g. Vanessa Mint" required>
+                </div>
+                <div class="form-input">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="e.g. vanessamint@lorem.com" required>
+                </div>
+                <div class="form-input">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="e.g. +1 234 567 890" required>
+                    
+                </div>
+                <button type="submit" class="next-step-btn" onclick="navigateToPlan()">Next Step</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
